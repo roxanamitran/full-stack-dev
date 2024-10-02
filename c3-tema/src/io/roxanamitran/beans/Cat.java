@@ -1,6 +1,6 @@
-package io.roxanamitran.fullstackdev.temaC3;
+package io.roxanamitran.beans;
 
-public class Cat implements IAnimal{
+public class Cat implements IAnimal {
     @Override
     public String makeSound() {
         return "Miau-Miau";

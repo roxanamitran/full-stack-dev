@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy />
+
+    <bean id="prototypeTask"
+          class="beans.Task"
+          scope="prototype"
+          init-method="init"
+          destroy-method="destroy">
+    </bean>
+
+    <bean id="singletonTask"
+          class="beans.Task"
+          scope="singleton"
+          init-method="init"
+          destroy-method="destroy">
+    </bean>
+
+    <bean id="loggingAspect" class="aop.LoggingAspect" />
+
+    <aop:config>
+        <aop:aspect ref="loggingAspect">
+            <!-- Define a pointcut (targeting methods in com.example.service package) -->
+            <aop:pointcut id="serviceMethods" expression="execution(* beans.Task.run(..))" />
+
+            <!-- Apply before advice -->
+            <aop:before pointcut-ref="serviceMethods" method="logBeforeMethod" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

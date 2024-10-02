@@ -1,6 +1,6 @@
-package io.roxanamitran.fullstackdev.temaC3;
+package io.roxanamitran.beans;
 
-public class Dog implements IAnimal{
+public class Dog implements IAnimal {
     private String name;
 
     @Override

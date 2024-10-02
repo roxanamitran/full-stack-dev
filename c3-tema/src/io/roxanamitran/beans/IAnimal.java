@@ -1,4 +1,4 @@
-package io.roxanamitran.fullstackdev.temaC3;
+package io.roxanamitran.beans;
 
 public interface IAnimal {
     String makeSound();
